@@ -8,7 +8,7 @@
 #include "Idea.h"
 
 Idea::Idea(string proposer, vector<string> keywords, string content) {
-	id++;
+	uniqId = ++id;
 	this->proposer = proposer;
 	this->keywords = keywords;
 	this->content = content;
@@ -20,28 +20,37 @@ Idea::~Idea() {
 
 int Idea::id = 0;
 
-int Idea::getID() {
-	return id;
+Idea::Idea(const Idea& copy){
+	uniqId = copy.getID();
+	proposer = copy.getProposer();
+	keywords = copy.getKeywords();
+	content = copy.getContent();
 }
 
-string Idea::getContent() {
+int Idea::getID() const{
+	return uniqId;
+}
+
+string Idea::getContent() const{
 	return content;
 }
 
-string Idea::getProposer() {
+string Idea::getProposer() const{
 	return proposer;
 }
 
-vector<string> Idea::getKeywords() {
+vector<string> Idea::getKeywords() const{
 	return keywords;
 }
 void Idea::toString() {
-	cout << "This object has id: " << id << ".\nProposer: " << proposer;
-	cout << "Content is: " << content << endl;
+	cout << "This object has id: " << getID() << ".\nProposer: " << proposer;
+	cout << "\nContent is: " << content << endl;
+	cout << "Keywords are: " << endl;
 	for (vector<string>::const_iterator i = keywords.begin();
 			i != keywords.end(); ++i) {
 		std::cout << *i << ' ';
 	}
+	cout << endl;
 	cout << endl;
 }
 

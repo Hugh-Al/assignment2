@@ -15,17 +15,19 @@ using namespace std;
 class Idea {
 public:
 	Idea(string, vector<string>, string);
+	Idea(const Idea&);
 	virtual ~Idea();
 	//Getters
-	int getID();
-	string getContent();
-	string getProposer();
-	vector<string> getKeywords();
+	int getID() const;
+	string getContent() const;
+	string getProposer() const;
+	vector<string> getKeywords() const;
 	void toString();
 	bool findContent(string);
 	bool findKeyword(string);
 private:
 	static int id;
+	int uniqId;
 	string proposer;
 	string content;
 	vector<string> keywords;
