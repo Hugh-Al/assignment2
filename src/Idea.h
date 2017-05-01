@@ -16,8 +16,14 @@ class Idea {
 public:
 	Idea(string, vector<string>, string);
 	virtual ~Idea();
+	//Getters
 	int getID();
+	string getContent();
+	string getProposer();
+	vector<string> getKeywords();
 	void toString();
+	bool findContent(string);
+	bool findKeyword(string);
 private:
 	static int id;
 	string proposer;

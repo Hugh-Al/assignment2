@@ -24,10 +24,37 @@ int Idea::getID() {
 	return id;
 }
 
+string Idea::getContent() {
+	return content;
+}
+
+string Idea::getProposer() {
+	return proposer;
+}
+
+vector<string> Idea::getKeywords() {
+	return keywords;
+}
 void Idea::toString() {
 	cout << "This object has id: " << id << ".\nProposer: " << proposer;
 	cout << "Content is: " << content << endl;
-	for (vector<string>::const_iterator i = keywords.begin(); i != keywords.end(); ++i){
-	    std::cout << *i << ' ';
+	for (vector<string>::const_iterator i = keywords.begin();
+			i != keywords.end(); ++i) {
+		std::cout << *i << ' ';
 	}
+	cout << endl;
+}
+
+bool Idea::findContent(string word) {
+	return content.find(word);
+}
+
+bool Idea::findKeyword(string word) {
+	for (vector<string>::const_iterator i = keywords.begin();
+			i != keywords.end(); ++i) {
+		if (word == *i) {
+			return true;
+		}
+	}
+	return false;
 }
