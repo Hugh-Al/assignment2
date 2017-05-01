@@ -22,18 +22,19 @@ int main() {
 	k3.push_back("Goodbye humans");
 
 
-	Idea test("Huy", keyword, "The quick brown fox jumps over the lazy dog.");
-	Idea test2("Monkey", k2, "Why dear god, why");
-	Idea test3("Taxi", k3, "I didn't ask to be born.");
+//	Idea test("Huy", keyword, "The quick brown fox jumps over the lazy dog.");
+//	Idea test2("Monkey", k2, "Why dear god, why");
+//	Idea test3("Taxi", k3, "I didn't ask to be born.");
 
 	IdeasBank please;
-	please.insertIdea(test);
-	please.insertIdea(test2);
-	please.insertIdea(test3);
-
+	please.insertData();
+//	please.insertIdea(test);
+//	please.insertIdea(test2);
+//	please.insertIdea(test3);
+//
 	please.displayBank();
-	please.deleteIdea(2);
-	please.displayBank();
+//	please.deleteIdea(2);
+//	please.displayBank();
 //	please.displayIdea(3);
 
 	return 0;

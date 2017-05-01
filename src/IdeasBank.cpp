@@ -16,6 +16,30 @@ IdeasBank::~IdeasBank() {
 	// TODO Auto-generated destructor stub
 }
 
+void IdeasBank::insertData() {
+	string name;
+	string temp;
+	string lineInput;
+	vector<string> keywords;
+	cout << "Please enter Proposers name\n>";
+	getline(cin, name);
+	cout
+			<< "Please insert keywords. Each new keyword must be followed by entering the RETURN key.\nTo quit, please enter '\\'"
+			<< endl;
+	while (true) {
+		getline(cin, temp);
+		if(temp.compare("\\") == 0){
+			break;
+		}
+		keywords.push_back(temp);
+	}
+	cout << "Please enter content\n>";
+	getline(cin, lineInput);
+	Idea newIdea(name, keywords, lineInput);
+	bank.push_back(newIdea);
+
+}
+
 void IdeasBank::insertIdea(Idea newIdea) {
 	bank.push_back(newIdea);
 }
