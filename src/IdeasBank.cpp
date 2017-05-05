@@ -6,6 +6,7 @@
  */
 
 #include "IdeasBank.h"
+#include <sstream>
 
 IdeasBank::IdeasBank() {
 	// TODO Auto-generated constructor stub
@@ -28,7 +29,7 @@ void IdeasBank::insertData() {
 			<< endl;
 	while (true) {
 		getline(cin, temp);
-		if(temp.compare("\\") == 0){
+		if (temp.compare("\\") == 0) {
 			break;
 		}
 		keywords.push_back(temp);
@@ -44,6 +45,66 @@ void IdeasBank::insertIdea(Idea newIdea) {
 	bank.push_back(newIdea);
 }
 
+void IdeasBank::ideaFile() {
+	string word;
+	string p;
+	string k;
+	string c;
+	string clear, clear2;
+	string line;
+	vector<string> keywords;
+	ifstream wordFile("lol.txt");
+	while (!wordFile.eof()) {
+		getline(wordFile, p, ':');
+		getline(wordFile, k, ':');
+		getline(wordFile, c, ':');
+		getline(wordFile, clear);
+		getline(wordFile, clear2);
+		istringstream keyword(k);
+		while (keyword >> word) // streams over content
+		{
+			keywords.push_back(word);
+		}
+		Idea newIdea(p, keywords, c); // calls the copy constructor
+		Ideasvector.push_back(newIdea); // incputs into vector
+	}
+
+	Ideasvector[0].toString();
+	Ideasvector[1].toString();
+	Ideasvector[2].toString();
+}
+
+void IdeasBank::insertFile(string file) {
+	ifstream dataInput("input.txt");
+	string word;
+
+	string propName;
+	string stringKeyword;
+//	vector<string> tempKeyword;
+	string tempContent;
+	string clearBuffer;
+
+	while (!dataInput.eof()) {
+		getline(dataInput, propName, ';');
+		getline(dataInput, stringKeyword, ';');
+		getline(dataInput, tempContent, ';');
+		getline(dataInput, clearBuffer);
+
+		stringstream keywordStream(stringKeyword);
+		istream_iterator<string> begin(keywordStream);
+		istream_iterator<string> end;
+		vector<string> tempKeyword(begin, end);
+
+		Idea tempIdea(propName, tempKeyword, tempContent);
+		bank.push_back(tempIdea);
+	}
+
+	bank[0].toString();
+	bank[1].toString();
+	bank[2].toString();
+	bank[3].toString();
+}
+
 void IdeasBank::displayIdea(int id) {
 	for (vector<Idea>::iterator i = bank.begin(); i != bank.end(); ++i) {
 		if (i->getID() == id) {
@@ -51,6 +112,8 @@ void IdeasBank::displayIdea(int id) {
 		}
 	}
 }
+
+//Do binary search here // make into separate function??
 void IdeasBank::deleteIdea(int id) {
 	for (vector<Idea>::iterator i = bank.begin(); i != bank.end(); ++i) {
 		if (i->getID() == id) {

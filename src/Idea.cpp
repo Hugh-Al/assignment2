@@ -43,15 +43,15 @@ vector<string> Idea::getKeywords() const{
 	return keywords;
 }
 void Idea::toString() {
-	cout << "This object has id: " << getID() << ".\nProposer: " << proposer;
-	cout << "\nContent is: " << content << endl;
-	cout << "Keywords are: " << endl;
+	cout << "ID: " << getID() << endl;
+	cout << "Proposer: " << proposer << endl;
+	cout << "Keywords: ";
 	for (vector<string>::const_iterator i = keywords.begin();
 			i != keywords.end(); ++i) {
 		std::cout << *i << ' ';
 	}
 	cout << endl;
-	cout << endl;
+	cout << "Content: " << content << endl;
 }
 
 bool Idea::findContent(string word) {
